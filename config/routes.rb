@@ -1,4 +1,8 @@
 Readit::Application.routes.draw do
+  get "links/new"
+
+  devise_for :users
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -12,7 +16,7 @@ Readit::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   resources :pages
-
+  resources :links
   # Sample resource route with options:
   #   resources :products do
   #     member do

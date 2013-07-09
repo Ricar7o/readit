@@ -1,0 +1,15 @@
+= form_for @link, html: { :class => "form-signin"} do |f|
+  - if @link.errors.any?
+    #error_explanation
+      %h2= pluralize(@link.errors.count, "error") + "prohibited this link from being saved:"
+      %ul
+        - @link.errors.full_messages.each do |msg|
+          %li= msg
+          
+  %h2.form-signin-heading Submit a new link
+  = f.text_field :title, :autofocus => true, :class => "input-xxlarge", :placeholder => "Title"
+  %br
+  = f.text_field :url, :class => "input-xxlarge", :placeholder => "URL"
+  %br
+  = f.submit "Submit", :class => "btn btn-large btn-primary"
+  = link_to "Cancel", pages_path, :class => "btn"
