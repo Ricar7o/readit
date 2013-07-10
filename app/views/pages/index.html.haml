@@ -1,0 +1,14 @@
+
+-if current_user.present?
+  = link_to 'Submit a new link', new_link_path
+- else
+  %p.text-warning Please log in to post new links or sign up if you haven't created an account yet
+
+%ul
+  - @links.each do |link|
+    %li.lead= link_to link.title, link.url
+
+%br
+.page_info
+  = page_entries_info @links
+= will_paginate @links, renderer: BootstrapPagination::Rails
