@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
+  
   def index
+
     params[:page]     ||= 1
     params[:per_page] ||= 10
 

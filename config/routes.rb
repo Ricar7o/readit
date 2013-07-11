@@ -21,6 +21,9 @@ Readit::Application.routes.draw do
   resources :links do
     resources :comments
   end
+
+  #use_link_thumbnailer
+  
   # Sample resource route with options:
   #   resources :products do
   #     member do
