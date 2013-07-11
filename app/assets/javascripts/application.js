@@ -13,3 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+// $(document).ready(function() {
+//   // $(".alert").alert();
+
+//   $('button').click(function() {
+//     $(".alert").alert('close');
+//   });
+// });

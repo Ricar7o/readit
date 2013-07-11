@@ -1,12 +1,15 @@
 
--if current_user.present?
-  = link_to 'Submit a new link', new_link_path
-- else
-  %p.text-warning Please log in to post new links or sign up if you haven't created an account yet
+-if !current_user.present?
+  .alert
+    %button.close{type: "button", :'data-dismiss' => "alert"} &times;
+    Please log in to post new links or sign up if you haven't created an account yet
 
-%ul
+%ul.unstyled
   - @links.each do |link|
-    %li.lead= link_to link.title, link.url
+    %li.lead
+      = link_to link.title, link.url, target: "_blank"
+      / = link_to "<i class='icon-comment'> </i>".html_safe, link
+      = link_to "<span class='badge'>#{link.comments.count}</span>".html_safe, link
 
 %br
 .page_info

@@ -1,2 +1,33 @@
-%h2= link_to @link.title, @link.url
-%p.muted= "Created by " + @link.username
+%h2= link_to @link.title, @link.url, target: "_blank"
+%p.muted
+  %i.icon-user
+  = " " + @link.username
+  %i.icon-calendar
+  = " " + @link.created_at.strftime('%b %d, %Y at %I:%M:%S %p')
+
+/ Display previous comments
+%h3.form-signin-heading Comments
+- @link.comments.each do |comment|
+  - if !comment.message.nil?
+    %p.muted
+      %i.icon-user
+      = " " + comment.username
+      %i.icon-calendar
+      = " " + comment.created_at.strftime('%b %d, %Y at %I:%M:%S %p')
+    %blockquote
+      - comment.message.split(/\r?\n/).each do |comment_line|
+        %p= comment_line
+
+
+/ Display the text area for a new comment
+= form_for [@link, @comment], html: { :class => "form-signin"} do |f|
+  - if @comment.errors.any?
+    #error_explanation
+      %h2= pluralize(@comment.errors.count, "error") + "prohibited this comment from being saved:"
+      %ul
+        - @comment.errors.full_messages.each do |msg|
+          %li= msg
+          
+  = f.text_area :message, :autofocus => true, :placeholder => "Comment here...", :class => "comment-text"
+  %br
+  = f.submit "Submit", :class => "btn"

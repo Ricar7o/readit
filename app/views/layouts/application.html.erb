@@ -22,7 +22,9 @@
         <div class="nav-collapse collapse">
           <ul class="nav">
             <% if current_user.present? %>
-              <li class="active"><%= link_to 'Log out', destroy_user_session_path, :method => :delete %></li>
+              <li class="active"><%= link_to "<i class='icon-plus'></i>".html_safe, new_link_path %></li>
+              <!-- <li class="active"><%= link_to ' + ', new_link_path %></li> -->
+              <li class="offset1"><%= link_to 'Log out', destroy_user_session_path, :method => :delete %></li>
             <% else %>
               <li><%= link_to 'Log in', new_user_session_path %></li>
               <li><%= link_to 'Sign up', new_user_registration_path %></li>
@@ -35,7 +37,7 @@
   
   <div class="container">
     <% if !notice.nil? %>
-      <p class="notice"><%= notice %></p>
+      <p class="alert alert-info notice"><%= notice %></p>
     <% end %>
     <% if !alert.nil? %>
       <p class="alert"><%= alert %><button type="button" class="close" data-dismiss="alert">&times;</button></p>

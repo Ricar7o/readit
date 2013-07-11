@@ -19,3 +19,11 @@ body {
 label.checkbox {
   margin-bottom: 10px;
 }
+
+.comment-text {
+  width: 30em;
+  max-width: 40em;
+
+  height: 10em;
+  max-height: 20em;
+}

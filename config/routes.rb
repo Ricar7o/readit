@@ -1,4 +1,6 @@
 Readit::Application.routes.draw do
+  get "comments/show"
+
   get "links/new"
 
   devise_for :users
@@ -16,7 +18,9 @@ Readit::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   resources :pages
-  resources :links
+  resources :links do
+    resources :comments
+  end
   # Sample resource route with options:
   #   resources :products do
   #     member do

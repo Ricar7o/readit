@@ -1,8 +1,8 @@
-class Link < ActiveRecord::Base
-  attr_accessible :title, :url
+class Comment < ActiveRecord::Base
+  attr_accessible :message, :link_id
 
   belongs_to  :user
-  has_many    :comments
+  belongs_to  :link
 
   def username
     if self.user
